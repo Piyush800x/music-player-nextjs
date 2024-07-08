@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon, EnterIcon } from "@radix-ui/react-icons";
 
 export default function Navbar() {
   return (
-    <div className="sticky bg-neutral-800 rounded-lg py-1.5 px-2.5 mx-32 min-w-">
+    <div className="sticky top-2 bg-neutral-800 rounded-lg py-1.5 px-2.5 mx-32">
       <div className="flex flex-row justify-between items-center">
         {/* Left Items */}
         <div className="flex flex-row gap-6 font-semibold pl-2">
