@@ -730,6 +730,19 @@ body {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
+<<<<<<< HEAD
+.bg-white\/20 {
+  background-color: rgb(255 255 255 / 0.2);
+}
+
+.bg-white\/30 {
+  background-color: rgb(255 255 255 / 0.3);
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+=======
 .bg-neutral-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(38 38 38 / var(--tw-bg-opacity));
@@ -758,6 +771,7 @@ body {
 .py-1\.5 {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
+>>>>>>> 3716cba1f850f86b42786bbdca2cf913fc468632
 }
 
 .py-2 {
