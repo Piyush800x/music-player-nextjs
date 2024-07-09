@@ -22,7 +22,6 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({track}) => {
     const fetchTrackUrl = async () => {
       console.log(`track: ${track}`);
       try {
-        // Problem here, need to send the track to the api call, it stays undefined
         const response = await fetch(`/api/s3`, {
           method: "POST",
           headers: {
