@@ -23,7 +23,13 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({track}) => {
       console.log(`track: ${track}`);
       try {
         // Problem here, need to send the track to the api call, it stays undefined
-        const response = await fetch(`/api/s3?id=${track}`, {method:"GET"});
+        const response = await fetch(`/api/s3`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(track),
+        });
         console.log(response);
         const data = await response.json();
         setTrackURL(data.url);
