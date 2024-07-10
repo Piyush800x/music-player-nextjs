@@ -6,7 +6,7 @@ interface Track {
 }
 
 export default async function Musics() {
-    const track: any = "weeknd/01.Starboy"
+    const track: any = "weeknd/AfterHours"
 
     return (
         <div className="flex flex-col items-center justify-center">
