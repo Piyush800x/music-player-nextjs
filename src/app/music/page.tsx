@@ -5,6 +5,7 @@ interface Track {
 }
 
 export default async function Musics() {
+
   const track: any = "weeknd/01.Starboy";
 
   return (
