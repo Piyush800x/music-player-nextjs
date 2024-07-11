@@ -34,36 +34,62 @@ export default function Add() {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formData);
+        if (!formData.file) {
+            return;
+        }
+        const arrayBuffer = await formData.file.arrayBuffer();
+        const metadata = {
+            artist: formData.artist,
+            album: formData.album,
+            musicName: formData.musicName,
+            filename: formData.file.name
+        };
+
+        try {
+            console.log(`PAge.tsx: ${formData}`)
+            const response = await fetch(`/api/addmusic`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Metadata': JSON.stringify(metadata),
+                },
+                body: arrayBuffer,
+            });
+            console.log(`Page Response: ${response.status}`);
+        }
+        catch (error) {
+            console.error(`Error > ${error}`);
+        }
+        
     }
 
     return (
         <div className="flex items-center flex-col">
             <h1>Add Music</h1>
             <div>
-                <form action="">
+                <form onSubmit={handleSubmit} method="POST">
                     {/* Artist Name */}
                     <label htmlFor="artist" className="block text-sm font-medium text-gray-700">Artist Name</label>
-                    <select id="artist" name="artist" value={formData.artist} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                    <select id="artist" name="artist" value={formData.artist} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
                         <option value="">Select an artist</option>
-                        <option value="Artist 1">The Weeknd</option>
-                        <option value="Artist 2">Childish Gambino</option>
+                        <option value="The Weeknd">The Weeknd</option>
+                        <option value="Childish Gambino">Childish Gambino</option>
                     </select>
                     {/* Album Name */}
                     <label htmlFor="album" className="block text-sm font-medium text-gray-700">Album Name</label>
-                    <select id="album" name="album" value={formData.album} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                    <select id="album" name="album" value={formData.album} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
                         <option value="">Select an album</option>
-                        <option value="Album 1">Starboy</option>
-                        <option value="Album 2">My Dear Meloncholy</option>
+                        <option value="Starboy">Starboy</option>
+                        <option value="My Dear Meloncholy">My Dear Meloncholy</option>
                     </select>
                     {/* Song Name */}
                     <label htmlFor="musicName" className="block text-sm font-medium text-gray-700">Song Name</label>
-                    <input id="musicName" name="musicName" value={formData.musicName} onChange={handleChange} placeholder="Enter song name" className="mt-1 block w-full p-2 border border-gray-300 rounded-md"/>
+                    <input id="musicName" name="musicName" value={formData.musicName} onChange={handleChange} placeholder="Enter song name" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
                     {/* Upload Music */}
                     <label htmlFor="file" className="block text-sm font-medium text-gray-700">Upload music file</label>
-                    <input id="file" name="file" type="file" accept=".flac" onChange={handleFileChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md"/>
+                    <input id="file" name="file" type="file" accept=".flac" onChange={handleFileChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required/>
 
                     <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Submit</button>
                 </form>

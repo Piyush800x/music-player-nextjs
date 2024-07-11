@@ -9,12 +9,12 @@ const uri = process.env.MONGODB_URI;
 const options = {};
 
 let client;
-let clientPromise: Promise<MongoClient>;
+let mongoClientPromise: Promise<MongoClient>;
 
 
 // In production mode, create a new client for each request
 client = new MongoClient(uri, options);
-clientPromise = client.connect();
+mongoClientPromise = client.connect();
 
 
-export default clientPromise;
+export default mongoClientPromise;
