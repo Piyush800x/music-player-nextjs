@@ -44,7 +44,7 @@ interface SongData {
     songFileName: string
 }
 
-export async function insertSong({songName, artistName, albumName, songFileName}: SongData) {
+async function insertSong({songName, artistName, albumName, songFileName}: SongData) {
     const client = await mongoClientPromise;
     const db = client.db(`${process.env.MONGODB_DB}`);
 

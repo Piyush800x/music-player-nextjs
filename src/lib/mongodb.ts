@@ -18,20 +18,20 @@ mongoClientPromise = client.connect();
 
 export default mongoClientPromise;
 
-export interface Artist {
+interface Artist {
   _id: ObjectId,
   name: string,
   albums: Array<{album_id: ObjectId; name: string}>
 }
 
-export interface Album {
+interface Album {
   _id: ObjectId;
   name: string;
   artist_id: ObjectId;
   songs: Array<{ song_id: ObjectId; name: string, song_file_name: string }>;
 }
 
-export interface Song {
+interface Song {
   _id: ObjectId;
   name: string;
   album_id: ObjectId;
