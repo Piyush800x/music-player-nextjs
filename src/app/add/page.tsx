@@ -16,6 +16,7 @@ export default function Add() {
         musicName: "",
         file: null
     });
+    const [btn, setBtn] = useState<string>("Submit")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
@@ -36,6 +37,7 @@ export default function Add() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setBtn("Uploading...")
         if (!formData.file) {
             return;
         }
@@ -58,9 +60,11 @@ export default function Add() {
                 body: arrayBuffer,
             });
             console.log(`Page Response: ${response.status}`);
+            setBtn("Submit")
         }
         catch (error) {
             console.error(`Error > ${error}`);
+            setBtn("Submit")
         }
         
     }
@@ -72,18 +76,22 @@ export default function Add() {
                 <form onSubmit={handleSubmit} method="POST">
                     {/* Artist Name */}
                     <label htmlFor="artist" className="block text-sm font-medium text-gray-700">Artist Name</label>
-                    <select id="artist" name="artist" value={formData.artist} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                    {/* <select id="artist" name="artist" value={formData.artist} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
                         <option value="">Select an artist</option>
                         <option value="The Weeknd">The Weeknd</option>
                         <option value="Childish Gambino">Childish Gambino</option>
-                    </select>
+                    </select> */}
+                    <input id="artist" name="artist" value={formData.artist} onChange={handleChange} placeholder="Enter artist name" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+
                     {/* Album Name */}
                     <label htmlFor="album" className="block text-sm font-medium text-gray-700">Album Name</label>
-                    <select id="album" name="album" value={formData.album} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                    {/* <select id="album" name="album" value={formData.album} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
                         <option value="">Select an album</option>
                         <option value="Starboy">Starboy</option>
                         <option value="My Dear Meloncholy">My Dear Meloncholy</option>
-                    </select>
+                    </select> */}
+                    <input id="album" name="album" value={formData.album} onChange={handleChange} placeholder="Enter album name" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+
                     {/* Song Name */}
                     <label htmlFor="musicName" className="block text-sm font-medium text-gray-700">Song Name</label>
                     <input id="musicName" name="musicName" value={formData.musicName} onChange={handleChange} placeholder="Enter song name" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
@@ -91,7 +99,7 @@ export default function Add() {
                     <label htmlFor="file" className="block text-sm font-medium text-gray-700">Upload music file</label>
                     <input id="file" name="file" type="file" accept=".flac" onChange={handleFileChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required/>
 
-                    <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Submit</button>
+                    <button name="submitBtn" type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">{btn}</button>
                 </form>
             </div>
         </div>
