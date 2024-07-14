@@ -38,7 +38,7 @@ export default function Searchpage({songs, onSend}: ResultsProps) {
               {songs.length > 0 ? (
                 <>
                 {songs.map((song: Song) => (
-                <div className="flex flex-row py-3 px-3 justify-between items-center">
+                <div key={song._id} className="flex flex-row py-3 px-3 justify-between items-center">
                   <div className="flex gap-3 items-center">
                     <button onClick={async () => {
                       handleSubmit(song.song_file_name)
