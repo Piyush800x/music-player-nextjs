@@ -80,7 +80,7 @@ export default function Searchpage({songs, onSend}: ResultsProps) {
               />
               {/* Year and artist name */}
               <div className="">
-                <h1 className="font-semibold">1989 (Taylor's Version)</h1>
+                <h1 className="font-semibold">1989 (Taylors Version)</h1>
                 <h1 className="text-zinc-300">2023 | Taylor Swift</h1>
               </div>
             </div>
