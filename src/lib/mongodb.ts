@@ -42,3 +42,15 @@ interface Song {
 export const getArtistsCollection = (db: Db): Collection<Artist> => db.collection('artists');
 export const getAlbumsCollection = (db: Db): Collection<Album> => db.collection('albums');
 export const getSongsCollection = (db: Db): Collection<Song> => db.collection('songs');
+
+export async function searchSongs(query: string) {
+  const client = await mongoClientPromise;
+  const db = client.db('musics');
+  const songsCollection = db.collection('songs');
+
+  const results = await songsCollection.find({
+    name: {$regex: query, $options: 'i'}
+  }).toArray();
+  console.log(`DB: ${JSON.stringify(results)}`)
+  return results;
+}

@@ -37,3 +37,4 @@ next-env.d.ts
 
 cmd.txt
 .env.local
+.vercel
