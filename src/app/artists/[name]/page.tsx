@@ -11,8 +11,9 @@ export default function Artists({ params }: Props) {
   return (
     <>
       <main className="bg-black text-white w-full h-full">
-        <Navbar />
-        <ArtistAlbums artistName={params.name} />
+        {/* <Navbar />
+        <ArtistAlbums artistName={params.name} /> */}
+        HEllo World
       </main>
     </>
   );
