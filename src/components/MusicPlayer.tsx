@@ -113,7 +113,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({track}) => {
         //   <div key="progress" className="custom-progress-bar flex-1" />,
         // ]}
         customControlsSection={[
-          <div className='flex items-center mt-2'>
+          <div key="output" className='flex items-center mt-2'>
             <button onClick={() => setShowSelect(!showSelect)} className="text-white">
               <PiSpeakerHifi className='text-black' size={30} />
             </button>
