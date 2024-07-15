@@ -33,7 +33,6 @@ export default function Searchpage({songs, onSend}: ResultsProps) {
           <h1 className="text-4xl font-bold">Musics</h1>
           {/* Music container */}
           <div className="bg-zinc-900 border border-neutral-700 rounded-md p-2 my-3">
-            Musics
             <>
               {songs.length > 0 ? (
                 <>

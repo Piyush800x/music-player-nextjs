@@ -42,7 +42,7 @@ export default function Navbar({ onSearch }: NavbarProps) {
             {/* <Link type="submit" className="absolute z-50 ml-4">
               <MagnifyingGlassIcon className="size-5"/>
             </Link> */}
-            <Input type="search" placeholder="Search for musics" typeof="text" value={query} onChange={(e) => {setQuery(e.target.value)}}/>
+            <Input className="border-0 ring-0 outline-1" type="search" placeholder="Search for musics" typeof="text" value={query} onChange={(e) => {setQuery(e.target.value)}}/>
           </form>
         </div>
         {/* Right */}
